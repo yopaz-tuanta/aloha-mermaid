@@ -2,13 +2,9 @@ sequenceDiagram
     participant M as メンバー
     participant CA as 国別管理者
     participant GA as グローバル管理者
-    participant Mail as メールシステム
 
     M->>M: アカウントを既に持っていますか？
     alt アカウント未登録
-        M->>Mail: 登録招待メールを送信（72時間有効）
-        CA->>Mail: 登録招待メールを送信（72時間有効）
-        Mail-->>受信者: 招待リンクを受信
 
         M->>GA: 登録申請を送信
         M->>CA: 登録申請を送信

@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant CA as 国別管理者
+    participant GA as グローバル管理者
+    participant U as 招待されたユーザー
+    participant App as システム
+
+    CA->>U: 登録招待を送信（有効期限72時間）
+    GA->>U: 登録招待を送信（有効期限72時間）
+
+    alt リンクを72時間以内に開く
+        U->>App: リンクを開き、登録フォームを入力
+        App-->>U: 会員アカウントを作成
+        U->>App: システムにログイン
+    else 有効期限切れ
+        App-->>U: リンクの有効期限切れ、登録不可
+    end
