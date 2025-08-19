@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant M as メンバー
+    participant P as パートナー
+    participant CA as 地域管理者
+    participant GA as グローバル管理者
+    participant Pay as 決済ゲートウェイ
+
+    M->>P: 商談
+    P-->>M: 応答
+
+    M->>CA: 商談結果を報告
+    CA-->>GA: 承認依頼を送信
+
+    alt 商談成功
+        GA-->>M: 成功を確認
+        M->>Pay: 適切な候補者に対して料金を支払う
+        Pay-->>M: 決済完了
+    else 商談失敗
+        GA-->>M: 失敗を確認
+    end
