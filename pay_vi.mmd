@@ -1,5 +1,20 @@
 sequenceDiagram
     participant M as Member
+    participant P as Partner
+    participant CA as Country Admin
+    participant GA as Global Admin
+    participant Pay as Payment Gateway
 
-    M->>M: Thương thảo thành công
-    M->>M: Thanh toán khi tìm được ứng viên phù hợp
+    M->>P: Thương thảo
+    P-->>M: Phản hồi
+
+    M->>CA: Báo kết quả thương thảo
+    CA-->>GA: Gửi đề xuất xác nhận
+
+    alt Thương thảo thành công
+        GA-->>M: Xác nhận thành công
+        M->>Pay: Thanh toán phí ứng viên phù hợp
+        Pay-->>M: Hoàn tất thanh toán
+    else Thương thảo không thành công
+        GA-->>M: Xác nhận không thành công
+    end
