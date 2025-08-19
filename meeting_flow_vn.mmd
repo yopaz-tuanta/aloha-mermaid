@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant Member
+    participant Partner
+    participant System
+    participant CountryAdmin
+
+    Member->>Partner: Tạo và gửi lời mời họp
+    Partner->>Partner: Xem lời mời
+    Partner->>Partner: Chấp thuận hay từ chối?
+    alt Đồng ý
+        Partner->>System: Yêu cầu tạo URL Jitsi duy nhất
+        System-->>Partner: Tạo sự kiện kèm URL
+        System-->>Member: Tạo sự kiện kèm URL
+        Member->>Partner: Tham gia họp trực tuyến
+        Partner-->>Member: Tiến hành họp
+        Member->>System: Gửi kết quả sau cuộc họp
+        System->>CountryAdmin: Thông báo kết quả cuộc họp
+    else Từ chối
+        Partner-->>Member: Thông báo từ chối
+    end
