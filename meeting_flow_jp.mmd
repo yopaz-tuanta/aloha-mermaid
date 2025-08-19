@@ -5,10 +5,8 @@ sequenceDiagram
     participant CountryAdmin
 
     Member->>Partner: 会議招待を作成して送信
-    Partner->>Partner: 招待を確認
-    Partner->>Partner: 承諾するか拒否するか？
+    Partner->>Partner: 招待を確認（承諾・拒否）
     alt 承諾
-        Partner->>System: 一意のJitsi URLを作成依頼
         System-->>Partner: URL付きイベントを作成
         System-->>Member: URL付きイベントを作成
         Member->>Partner: オンライン会議に参加

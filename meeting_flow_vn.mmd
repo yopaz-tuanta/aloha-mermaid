@@ -5,10 +5,8 @@ sequenceDiagram
     participant CountryAdmin
 
     Member->>Partner: Tạo và gửi lời mời họp
-    Partner->>Partner: Xem lời mời
-    Partner->>Partner: Chấp thuận hay từ chối?
+    Partner->>Partner: Xem lời mời (đồng ý, từ chối)
     alt Đồng ý
-        Partner->>System: Yêu cầu tạo URL Jitsi duy nhất
         System-->>Partner: Tạo sự kiện kèm URL
         System-->>Member: Tạo sự kiện kèm URL
         Member->>Partner: Tham gia họp trực tuyến
