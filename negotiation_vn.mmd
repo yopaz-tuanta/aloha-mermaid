@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant Member
+    participant CountryAdmin
+    participant Partner
+    participant PartnerCountryAdmin
+
+    Note over Member,CountryAdmin: Bắt đầu yêu cầu ủy thác
+
+    Member->>CountryAdmin: Gửi yêu cầu giao dịch
+    CountryAdmin->>CountryAdmin: Xét duyệt yêu cầu
+    CountryAdmin->>PartnerCountryAdmin: Chuyển yêu cầu đến đại diện đối tác
+    PartnerCountryAdmin->>PartnerCountryAdmin: Xét duyệt yêu cầu
+    PartnerCountryAdmin->>Member: Gửi danh sách ứng viên phù hợp (<= 3)
+    Member->>Partner: Trao đổi với ứng viên
+    Member->>CountryAdmin: Gửi phản hồi lựa chọn
+    CountryAdmin->>Partner: Thông báo kết quả
+
+    Note over Member,CountryAdmin: Kết thúc yêu cầu ủy thác
