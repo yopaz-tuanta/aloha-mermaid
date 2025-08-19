@@ -4,15 +4,12 @@ sequenceDiagram
     participant Partner
     participant PartnerCountryAdmin
 
-    Note over Member,CountryAdmin: 委託リクエストの開始
 
     Member->>CountryAdmin: 取引リクエストを送信
     CountryAdmin->>CountryAdmin: リクエストを審査
     CountryAdmin->>PartnerCountryAdmin: リクエストをパートナー国代表に転送
     PartnerCountryAdmin->>PartnerCountryAdmin: リクエストを審査
-    PartnerCountryAdmin->>Member: 適切な候補者リスト（最大3件）を送信
+    PartnerCountryAdmin-->>Member: 適切な候補者リスト（最大3件）を送信
     Member->>Partner: 候補者とやり取り
     Member->>CountryAdmin: 選択結果を送信
     CountryAdmin->>Partner: 結果を通知
-
-    Note over Member,CountryAdmin: 委託リクエストの終了
