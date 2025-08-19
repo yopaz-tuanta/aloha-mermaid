@@ -1,20 +1,21 @@
 sequenceDiagram
     participant M as メンバー
-    participant CA as 地域管理者
+    participant CA as 国別管理者
     participant GA as グローバル管理者
 
-    M->>M: アカウントを持っているか確認
-    alt アカウントなし
+    M->>M: アカウントを既に持っていますか？
+    alt アカウント未登録
+
         M->>GA: 登録申請を送信
         M->>CA: 登録申請を送信
         par 承認待ち
-            GA-->>M: アカウントを承認または拒否
-            CA-->>M: アカウントを承認または拒否
+            GA-->>M: アカウントを承認または却下
+            CA-->>M: アカウントを承認または却下
         end
         alt 承認された場合
             M->>M: システムにログイン
-        else 拒否された場合
-            M->>M: ログインできない
+        else 却下された場合
+            M->>M: ログイン不可
         end
     else アカウントあり
         M->>M: システムにログイン

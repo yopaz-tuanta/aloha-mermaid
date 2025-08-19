@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant CA as Country Admin
+    participant GA as Global Admin
+    participant U as Người nhận
+    participant App as Hệ thống
+
+    CA->>U: Gửi lời mời đăng ký (hiệu lực 72h)
+    GA->>U: Gửi lời mời đăng ký (hiệu lực 72h)
+
+    alt Mở link < 72h
+        U->>App: Mở link & điền form đăng ký
+        App-->>U: Ghi nhận & tạo tài khoản Member
+        U->>App: Đăng nhập hệ thống
+    else Quá hạn
+        App-->>U: Link hết hạn, không thể đăng ký
+    end
