@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant M as Member
+    participant CA as Admin Khu vực
+    participant GA as Admin Global
+
+    M->>M: Kiểm tra đã có tài khoản?
+    alt Chưa có tài khoản
+        M->>GA: Gửi yêu cầu đăng ký
+        M->>CA: Gửi yêu cầu đăng ký
+        par Chờ duyệt
+            GA-->>M: Duyệt hoặc từ chối tài khoản
+            CA-->>M: Duyệt hoặc từ chối tài khoản
+        end
+        alt Được duyệt
+            M->>M: Đăng nhập hệ thống
+        else Bị từ chối
+            M->>M: Không thể đăng nhập
+        end
+    else Đã có tài khoản
+        M->>M: Đăng nhập hệ thống
+    end
